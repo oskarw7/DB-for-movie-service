@@ -615,6 +615,7 @@ VALUES
 INSERT INTO Opinie (IDZwyklegoUzytkownika, IDFilmu, Ocena, Tresc, DataWystawienia)
 VALUES
     ((SELECT ID FROM ZwykliUzytkownicy WHERE Email = 'marta.kaczmarek@example.com'), 1, 8, 'Film był naprawdę interesujący.', GETDATE()),
+    ((SELECT ID FROM ZwykliUzytkownicy WHERE Email = 'marta.kaczmarek@example.com'), 20, 10, 'Arcydzieło, naprawdę warto zobaczyć.', GETDATE()),
     ((SELECT ID FROM ZwykliUzytkownicy WHERE Email = 'tomasz.szymanski@example.com'), 1, 9, 'Naprawdę dobra produkcja.', GETDATE()),
     ((SELECT ID FROM ZwykliUzytkownicy WHERE Email = 'pawel.kwiatkowski@example.com'), 3, 7, 'Dobry, ale czegoś mi brakowało.', GETDATE()),
     ((SELECT ID FROM ZwykliUzytkownicy WHERE Email = 'joanna.pawlak@example.com'), 4, 6, 'Były lepsze filmy w tym gatunku.', GETDATE()),
@@ -632,8 +633,7 @@ VALUES
     ((SELECT ID FROM ZwykliUzytkownicy WHERE Email = 'weronika.rybak@example.com'), 16, 9, 'Poruszający i dobrze zrealizowany.', GETDATE()),
     ((SELECT ID FROM ZwykliUzytkownicy WHERE Email = 'rafal.jablonski@example.com'), 1, 5, 'Nie polecam, zbyt chaotyczny.', GETDATE()),
     ((SELECT ID FROM ZwykliUzytkownicy WHERE Email = 'kamil.mazur@example.com'), 18, 7, 'Dobry, ale brakowało emocji.', GETDATE()),
-    ((SELECT ID FROM ZwykliUzytkownicy WHERE Email = 'izabela.piotrowska@example.com'), 19, 8, 'Podobał mi się klimat filmu.', GETDATE()),
-    ((SELECT ID FROM ZwykliUzytkownicy WHERE Email = 'marta.kaczmarek@example.com'), 20, 10, 'Arcydzieło, naprawdę warto zobaczyć.', GETDATE());
+    ((SELECT ID FROM ZwykliUzytkownicy WHERE Email = 'izabela.piotrowska@example.com'), 19, 8, 'Podobał mi się klimat filmu.', GETDATE());
 
 
 -- Recenzje krytyków
@@ -669,18 +669,18 @@ VALUES
   ((SELECT ID FROM ZwykliUzytkownicy WHERE Email = 'marta.kaczmarek@example.com'), 3, 'notWatched'),
   ((SELECT ID FROM ZwykliUzytkownicy WHERE Email = 'joanna.pawlak@example.com'), 1, 'notWatched'),
   ((SELECT ID FROM ZwykliUzytkownicy WHERE Email = 'magdalena.krawczyk@example.com'), 3, 'notWatched'),
-  ((SELECT ID FROM ZwykliUzytkownicy WHERE Email = 'piotr.sikora@example.com'), 6, 'watched'),
+  ((SELECT ID FROM ZwykliUzytkownicy WHERE Email = 'marta.kaczmarek@example.com'), 6, 'watched'),
   ((SELECT ID FROM ZwykliUzytkownicy WHERE Email = 'mariusz.kucharski@example.com'), 7, 'notWatched'),
   ((SELECT ID FROM ZwykliUzytkownicy WHERE Email = 'agnieszka.mazur@example.com'), 8, 'notWatched'),
   ((SELECT ID FROM ZwykliUzytkownicy WHERE Email = 'monika.gorska@example.com'), 9, 'notWatched'),
   ((SELECT ID FROM ZwykliUzytkownicy WHERE Email = 'michal.wysocki@example.com'), 10, 'watched'),
   ((SELECT ID FROM ZwykliUzytkownicy WHERE Email = 'zofia.mazur@example.com'), 11, 'notWatched'),
   ((SELECT ID FROM ZwykliUzytkownicy WHERE Email = 'lena.nowak@example.com'), 12, 'watched'),
-  ((SELECT ID FROM ZwykliUzytkownicy WHERE Email = 'karol.duda@example.com'), 13, 'notWatched'),
-  ((SELECT ID FROM ZwykliUzytkownicy WHERE Email = 'dorota.kwiatkowska@example.com'), 14, 'notWatched'),
+  ((SELECT ID FROM ZwykliUzytkownicy WHERE Email = 'lena.nowak@example.com'), 13, 'notWatched'),
+  ((SELECT ID FROM ZwykliUzytkownicy WHERE Email = 'karol.duda@example.com'), 14, 'notWatched'),
   ((SELECT ID FROM ZwykliUzytkownicy WHERE Email = 'szymon.wozniak@example.com'), 15, 'notWatched'),
   ((SELECT ID FROM ZwykliUzytkownicy WHERE Email = 'weronika.rybak@example.com'), 16, 'watched'),
   ((SELECT ID FROM ZwykliUzytkownicy WHERE Email = 'rafal.jablonski@example.com'), 17, 'notWatched'),
   ((SELECT ID FROM ZwykliUzytkownicy WHERE Email = 'kamil.mazur@example.com'), 18, 'watched'),
   ((SELECT ID FROM ZwykliUzytkownicy WHERE Email = 'izabela.piotrowska@example.com'), 19, 'notWatched'),
-  ((SELECT ID FROM ZwykliUzytkownicy WHERE Email = 'marcin.kaczmarek@example.com'), 20, 'notWatched');
+  ((SELECT ID FROM ZwykliUzytkownicy WHERE Email = 'rafal.jablonski@example.com'), 20, 'notWatched');
