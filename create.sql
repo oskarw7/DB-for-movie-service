@@ -18,7 +18,7 @@ DROP TABLE IF EXISTS Osoby;
 CREATE TABLE Osoby(
     ID INT PRIMARY KEY IDENTITY(1,1),
     Imie VARCHAR(100) NOT NULL CHECK(Imie LIKE '[A-ZŁ]%'
-        AND Imie NOT LIKE '%[^A-Za-zĄŁąćęłńóśżź]%'),
+        AND Imie NOT LIKE '%[^A-Za-zŁąćęłńóśżź \.-]%'),
     Nazwisko VARCHAR(200) NOT NULL CHECK(Nazwisko NOT LIKE '%[^A-Za-zĄĆĘŁŃÓŚŻŹąćęłńóśżź ''\-]%' 
         AND Nazwisko LIKE '%[A-ZĄĆĘŁŃÓŚŻŹ]%' 
         AND Nazwisko NOT LIKE '%[ ''\-][ ''\-]%'
@@ -35,7 +35,7 @@ CREATE TABLE ZwykliUzytkownicy(
 
 CREATE TABLE Krytycy(
     ID INT PRIMARY KEY,
-    FOREIGN KEY(ID) REFERENCES Osoby(ID),
+    FOREIGN KEY(ID) REFERENCES Osoby(ID) ON DELETE CASCADE,
     Email VARCHAR(400) NOT NULL UNIQUE CHECK (Email LIKE '%@%.%'),
     Redakcja VARCHAR(100) NOT NULL
 );
@@ -65,11 +65,12 @@ CREATE TABLE Filmy(
 CREATE TABLE Opinie(
     ID INT PRIMARY KEY IDENTITY(1,1),
     IDZwyklegoUzytkownika INT FOREIGN KEY REFERENCES ZwykliUzytkownicy(ID),
-    IDKrytyka INT FOREIGN KEY REFERENCES Krytycy(ID),
+    IDKrytyka INT FOREIGN KEY REFERENCES Krytycy(ID) ON DELETE CASCADE,
     IDFilmu INT NOT NULL FOREIGN KEY REFERENCES Filmy(ID),
     Ocena INT NOT NULL CHECK(Ocena >= 0 and Ocena <= 10),
     Tresc VARCHAR(1500) NOT NULL,
-    DataWystawienia DATE NOT NULL CHECK(DataWystawienia <= GETDATE())
+    DataWystawienia DATE NOT NULL CHECK(DataWystawienia <= GETDATE()),
+    CONSTRAINT KtoDodal CHECK(IDZwyklegoUzytkownika IS NOT NULL OR IDKrytyka IS NOT NULL)
 );
 
 CREATE TABLE FilmyDoObejrzenia(
@@ -85,7 +86,7 @@ CREATE TABLE Gatunki(
 );
 
 CREATE TABLE GatunkiFilmu(
-    NazwaGatunku VARCHAR(100) NOT NULL FOREIGN KEY REFERENCES Gatunki(Nazwa),
+    NazwaGatunku VARCHAR(100) NOT NULL FOREIGN KEY REFERENCES Gatunki(Nazwa) ON UPDATE CASCADE,
     IDFilmu INT NOT NULL FOREIGN KEY REFERENCES Filmy(ID),
     PRIMARY KEY (NazwaGatunku, IDFilmu)
 );
