@@ -17,8 +17,8 @@ DROP TABLE IF EXISTS Osoby;
 
 CREATE TABLE Osoby(
     ID INT PRIMARY KEY IDENTITY(1,1),
-    Imie VARCHAR(100) NOT NULL CHECK(Imie LIKE '[A-ZŁ]%'
-        AND Imie NOT LIKE '%[^A-Za-zŁąćęłńóśżź \.-]%'),
+    Imie VARCHAR(100) NOT NULL CHECK(Imie LIKE '[A-ZŁŻ]%'
+        AND Imie NOT LIKE '%[^A-Za-zŁŻąćęłńóśżź \.-]%'),
     Nazwisko VARCHAR(200) NOT NULL CHECK(Nazwisko NOT LIKE '%[^A-Za-zĄĆĘŁŃÓŚŻŹąćęłńóśżź ''\-]%' 
         AND Nazwisko LIKE '%[A-ZĄĆĘŁŃÓŚŻŹ]%' 
         AND Nazwisko NOT LIKE '%[ ''\-][ ''\-]%'
@@ -69,7 +69,7 @@ CREATE TABLE Opinie(
     IDFilmu INT NOT NULL FOREIGN KEY REFERENCES Filmy(ID),
     Ocena INT NOT NULL CHECK(Ocena >= 0 and Ocena <= 10),
     Tresc VARCHAR(1500) NOT NULL,
-    DataWystawienia DATE NOT NULL CHECK(DataWystawienia <= GETDATE()),
+    DataWystawienia DATE NOT NULL CHECK(DataWystawienia <= GETDATE()), -- TODO: dodać dolną granicę
     CONSTRAINT KtoDodal CHECK(IDZwyklegoUzytkownika IS NOT NULL OR IDKrytyka IS NOT NULL)
 );
 
