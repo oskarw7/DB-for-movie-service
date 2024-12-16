@@ -14,7 +14,7 @@ DROP TABLE IF EXISTS Krytycy;
 DROP TABLE IF EXISTS ZwykliUzytkownicy;
 DROP TABLE IF EXISTS Osoby;
 
-
+-- Definicje tabel
 CREATE TABLE Osoby(
     ID INT PRIMARY KEY IDENTITY(1,1),
     Imie VARCHAR(100) NOT NULL CHECK(Imie LIKE '[A-ZŁŻ]%'
@@ -55,7 +55,7 @@ CREATE TABLE Rezyserowie(
 CREATE TABLE Filmy(
     ID INT PRIMARY KEY IDENTITY(1,1),
     Tytul VARCHAR(300) NOT NULL,
-    RokProdukcji INT NOT NULL CHECK(RokProdukcji >= 1895 and RokProdukcji <= YEAR(GETDATE())),
+    RokProdukcji SMALLINT NOT NULL CHECK(RokProdukcji >= 1895 and RokProdukcji <= YEAR(GETDATE())),
     Opis VARCHAR(2000) NOT NULL,
     SredniaOcena DECIMAL(2,1) NOT NULL CHECK(SredniaOcena >= 0.0 and SredniaOcena <= 10.0),
     Zwiastun VARCHAR(2000),
@@ -69,7 +69,7 @@ CREATE TABLE Opinie(
     IDFilmu INT NOT NULL FOREIGN KEY REFERENCES Filmy(ID),
     Ocena INT NOT NULL CHECK(Ocena >= 0 and Ocena <= 10),
     Tresc VARCHAR(1500) NOT NULL,
-    DataWystawienia DATE NOT NULL CHECK(DataWystawienia <= GETDATE()), -- TODO: dodać dolną granicę
+    DataWystawienia DATE NOT NULL,
     CONSTRAINT KtoDodal CHECK(IDZwyklegoUzytkownika IS NOT NULL OR IDKrytyka IS NOT NULL)
 );
 
@@ -101,7 +101,7 @@ CREATE TABLE NagrodyFilmu(
     IDNagrody INT NOT NULL FOREIGN KEY REFERENCES Nagrody(ID),
     IDFilmu INT NOT NULL FOREIGN KEY REFERENCES Filmy(ID),
     PRIMARY KEY(IDNagrody, IDFilmu),
-    Rok INT NOT NULL CHECK(Rok >= 1895 and Rok <= YEAR(GETDATE()))
+    Rok SMALLINT NOT NULL CHECK(Rok >= 1895 and Rok <= YEAR(GETDATE()))
 );
 
 CREATE TABLE Obsada(
@@ -110,3 +110,18 @@ CREATE TABLE Obsada(
     PRIMARY KEY(IDFilmu, IDAktora),
     Rola VARCHAR(100) NOT NULL
 );
+
+-- Funkcje pomocnicze
+GO
+CREATE TRIGGER SprawdzDateWystawienia
+ON Opinie
+AFTER INSERT, UPDATE
+AS
+BEGIN
+    IF EXISTS(SELECT 1 FROM inserted WHERE YEAR(DataWystawienia) < (SELECT RokProdukcji FROM Filmy WHERE ID = IDFilmu) OR DataWystawienia > GETDATE())
+    BEGIN
+        RAISERROR('Data wystawienia opinii nie może być wcześniejsza niż rok produkcji filmu ani późniejsza niż dzisiejsza data.', 16, 1);
+        ROLLBACK;
+    END;
+END;
+GO
