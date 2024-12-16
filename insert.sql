@@ -493,8 +493,8 @@ INSERT INTO Osoby (Imie, Nazwisko, Plec)
 VALUES ('Ava', 'DuVernay', 'kobieta');
 INSERT INTO Rezyserowie (ID, Zyciorys)
 VALUES (IDENT_CURRENT('Osoby'), 'Ava DuVernay to amerykańska reżyserka, scenarzystka i producentka, znana z filmów poruszających kwestie rasowe, społeczne i polityczne.');
-INSERT INTO Filmy (Tytul, RokProdukcji, Opis, SredniaOcena, Zwiastun, IDRezysera)
-VALUES ('13th', 2016, 'Film dokumentalny, który bada nierówności rasowe w Stanach Zjednoczonych, koncentrując się na więziennictwie i systemie sprawiedliwości.', 8.2, 'link_do_zwiastuna_13th', IDENT_CURRENT('Osoby'));
+INSERT INTO Filmy (Tytul, RokProdukcji, Opis, SredniaOcena, IDRezysera)
+VALUES ('13th', 2016, 'Film dokumentalny, który bada nierówności rasowe w Stanach Zjednoczonych, koncentrując się na więziennictwie i systemie sprawiedliwości.', 8.2, IDENT_CURRENT('Osoby'));
 
 INSERT INTO Osoby (Imie, Nazwisko, Plec)
 VALUES ('Morgan', 'Neville', 'mezczyzna');
@@ -514,8 +514,8 @@ INSERT INTO Osoby (Imie, Nazwisko, Plec)
 VALUES ('Andrzej', 'Mazurek', 'mezczyzna');
 INSERT INTO Rezyserowie (ID, Zyciorys)
 VALUES (IDENT_CURRENT('Osoby'), 'Andrzej Mazurek to reżyser dokumentalny, znany z tworzenia filmów opartych na archiwalnych materiałach z II wojny światowej.');
-INSERT INTO Filmy (Tytul, RokProdukcji, Opis, SredniaOcena, Zwiastun, IDRezysera)
-VALUES ('Powstanie Warszawskie', 2014, 'Film dokumentalny, który w całości bazuje na archiwalnych materiałach wideo i zdjęciach z okresu Powstania Warszawskiego, ukazując rzeczywiste wydarzenia.', 8.2, 'link_do_zwiastuna_powstanie_warszawskie', IDENT_CURRENT('Osoby'));
+INSERT INTO Filmy (Tytul, RokProdukcji, Opis, SredniaOcena, IDRezysera)
+VALUES ('Powstanie Warszawskie', 2014, 'Film dokumentalny, który w całości bazuje na archiwalnych materiałach wideo i zdjęciach z okresu Powstania Warszawskiego, ukazując rzeczywiste wydarzenia.', 8.2, IDENT_CURRENT('Osoby'));
 
 
 -- Gatunki - tabela słownikowa

@@ -57,7 +57,7 @@ CREATE TABLE Filmy(
     Tytul VARCHAR(300) NOT NULL,
     RokProdukcji SMALLINT NOT NULL CHECK(RokProdukcji >= 1895 and RokProdukcji <= YEAR(GETDATE())),
     Opis VARCHAR(2000) NOT NULL,
-    SredniaOcena DECIMAL(2,1) NOT NULL CHECK(SredniaOcena >= 0.0 and SredniaOcena <= 10.0),
+    SredniaOcena DECIMAL(3,1) NOT NULL CHECK(SredniaOcena >= 0.0 and SredniaOcena <= 10.0),
     Zwiastun VARCHAR(2000),
     IDRezysera INT NOT NULL FOREIGN KEY REFERENCES Rezyserowie(ID)
 );
@@ -67,10 +67,10 @@ CREATE TABLE Opinie(
     IDZwyklegoUzytkownika INT FOREIGN KEY REFERENCES ZwykliUzytkownicy(ID) ON DELETE CASCADE,
     IDKrytyka INT FOREIGN KEY REFERENCES Krytycy(ID),
     IDFilmu INT NOT NULL FOREIGN KEY REFERENCES Filmy(ID),
-    Ocena INT NOT NULL CHECK(Ocena >= 0 and Ocena <= 10),
+    Ocena SMALLINT NOT NULL CHECK(Ocena >= 0 and Ocena <= 10),
     Tresc VARCHAR(1500) NOT NULL,
     DataWystawienia DATE NOT NULL,
-    CONSTRAINT KtoDodal CHECK(IDZwyklegoUzytkownika IS NOT NULL OR IDKrytyka IS NOT NULL)
+    CONSTRAINT AutorOpiniiXOR CHECK((IDZwyklegoUzytkownika IS NOT NULL AND IDKrytyka IS NULL) OR (IDZwyklegoUzytkownika IS NULL AND IDKrytyka IS NOT NULL))
 );
 
 CREATE TABLE FilmyDoObejrzenia(
