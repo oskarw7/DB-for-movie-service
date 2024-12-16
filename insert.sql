@@ -231,8 +231,8 @@ VALUES (IDENT_CURRENT('Osoby'), 'Christopher Nolan to brytyjsko-amerykański re�
 DECLARE @RezyserID INT;
 SET @RezyserID = IDENT_CURRENT('Osoby');
 ---
-INSERT INTO Filmy (Tytul, RokProdukcji, Opis, SredniaOcena, Zwiastun, IDRezysera) 
-VALUES ('Incepcja', 2010, 'Zdolny złodziej dostaje szansę na odkupienie, jeśli uda mu się przeprowadzić incepcję – zaszczepić pomysł w podświadomości celu.', 8.8, 'link_do_zwiastuna_incepcja', @RezyserID);
+INSERT INTO Filmy (Tytul, RokProdukcji, Opis, Zwiastun, IDRezysera) 
+VALUES ('Incepcja', 2010, 'Zdolny złodziej dostaje szansę na odkupienie, jeśli uda mu się przeprowadzić incepcję - zaszczepić pomysł w podświadomości celu.', 'link_do_zwiastuna_incepcja', @RezyserID);
     INSERT INTO Osoby (Imie, Nazwisko, Plec) 
     VALUES ('Leonardo', 'DiCaprio', 'mezczyzna');
     INSERT INTO Aktorzy (ID, Zyciorys) 
@@ -261,8 +261,8 @@ VALUES ('Incepcja', 2010, 'Zdolny złodziej dostaje szansę na odkupienie, jeśl
     INSERT INTO Obsada (IDFilmu, IDAktora, Rola) 
     VALUES ((SELECT ID FROM Filmy WHERE Tytul = 'Incepcja'), IDENT_CURRENT('Osoby'), 'Eames');
 ---
-INSERT INTO Filmy (Tytul, RokProdukcji, Opis, SredniaOcena, Zwiastun, IDRezysera)
-VALUES ('Interstellar', 2014, 'Grupa astronautów wyrusza w podróż kosmiczną, by znaleźć nowy dom dla ludzkości, gdy Ziemia przestaje być przyjazna.', 8.6, 'link_do_zwiastuna_interstellar', @RezyserID);
+INSERT INTO Filmy (Tytul, RokProdukcji, Opis, Zwiastun, IDRezysera)
+VALUES ('Interstellar', 2014, 'Grupa astronautów wyrusza w podróż kosmiczną, by znaleźć nowy dom dla ludzkości, gdy Ziemia przestaje być przyjazna.', 'link_do_zwiastuna_interstellar', @RezyserID);
     INSERT INTO Osoby (Imie, Nazwisko, Plec) 
     VALUES ('Matthew', 'McConaughey', 'mezczyzna');
     INSERT INTO Aktorzy (ID, Zyciorys) 
@@ -288,8 +288,8 @@ INSERT INTO Osoby (Imie, Nazwisko, Plec)
 VALUES ('Martin', 'Scorsese', 'mezczyzna');
 INSERT INTO Rezyserowie (ID, Zyciorys) 
 VALUES (IDENT_CURRENT('Osoby'), 'Martin Scorsese to amerykański reżyser i producent, znany z filmów takich jak Wściekły Byk, Casino i Ostatni Władca Wietrzu.');
-INSERT INTO Filmy (Tytul, RokProdukcji, Opis, SredniaOcena, Zwiastun, IDRezysera) 
-VALUES ('Wściekły Byk', 1980, 'Historia boksera Jake’a LaMotta, który zmaga się z własnymi demonami w trakcie kariery zawodowej.', 8.2, 'link_do_zwiastuna_wsciekly_byk', IDENT_CURRENT('Osoby'));
+INSERT INTO Filmy (Tytul, RokProdukcji, Opis, Zwiastun, IDRezysera) 
+VALUES ('Wściekły Byk', 1980, 'Historia boksera Jake’a LaMotta, który zmaga się z własnymi demonami w trakcie kariery zawodowej.', 'link_do_zwiastuna_wsciekly_byk', IDENT_CURRENT('Osoby'));
     INSERT INTO Osoby (Imie, Nazwisko, Plec) 
     VALUES ('Robert', 'De Niro', 'mezczyzna');
     INSERT INTO Aktorzy (ID, Zyciorys) 
@@ -315,8 +315,8 @@ INSERT INTO Osoby (Imie, Nazwisko, Plec)
 VALUES ('Quentin', 'Tarantino', 'mezczyzna');
 INSERT INTO Rezyserowie (ID, Zyciorys) 
 VALUES (IDENT_CURRENT('Osoby'), 'Quentin Tarantino to amerykański reżyser, scenarzysta i producent, znany z filmów takich jak Pulp Fiction i Django.');
-INSERT INTO Filmy (Tytul, RokProdukcji, Opis, SredniaOcena, Zwiastun, IDRezysera) 
-VALUES ('Pulp Fiction', 1994, 'Trzy połączone historie kryminalne z życia ludzi, którzy spotykają się w Los Angeles.', 8.9, 'link_do_zwiastuna_pulp_fiction', IDENT_CURRENT('Osoby'));
+INSERT INTO Filmy (Tytul, RokProdukcji, Opis, Zwiastun, IDRezysera) 
+VALUES ('Pulp Fiction', 1994, 'Trzy połączone historie kryminalne z życia ludzi, którzy spotykają się w Los Angeles.', 'link_do_zwiastuna_pulp_fiction', IDENT_CURRENT('Osoby'));
     INSERT INTO Osoby (Imie, Nazwisko, Plec) 
     VALUES ('John', 'Travolta', 'mezczyzna');
     INSERT INTO Aktorzy (ID, Zyciorys) 
@@ -343,8 +343,8 @@ INSERT INTO Osoby (Imie, Nazwisko, Plec)
 VALUES ('Steven', 'Spielberg', 'mezczyzna');
 INSERT INTO Rezyserowie (ID, Zyciorys) 
 VALUES (IDENT_CURRENT('Osoby'), 'Steven Spielberg to amerykański reżyser, znany z filmów takich jak E.T., Jurassic Park i Lista Schindlera.');
-INSERT INTO Filmy (Tytul, RokProdukcji, Opis, SredniaOcena, Zwiastun, IDRezysera) 
-VALUES ('E.T.', 1982, 'Grupa dzieci pomaga obcemu wrócić na swoją planetę, tworząc nieoczekiwaną przyjaźń z istotą z innego świata.', 7.8, 'link_do_zwiastuna_et', IDENT_CURRENT('Osoby'));
+INSERT INTO Filmy (Tytul, RokProdukcji, Opis, Zwiastun, IDRezysera) 
+VALUES ('E.T.', 1982, 'Grupa dzieci pomaga obcemu wrócić na swoją planetę, tworząc nieoczekiwaną przyjaźń z istotą z innego świata.', 'link_do_zwiastuna_et', IDENT_CURRENT('Osoby'));
     INSERT INTO Osoby (Imie, Nazwisko, Plec) 
     VALUES ('Henry', 'Thomas', 'mezczyzna');
     INSERT INTO Aktorzy (ID, Zyciorys) 
@@ -363,8 +363,8 @@ INSERT INTO Osoby (Imie, Nazwisko, Plec)
 VALUES ('Ridley', 'Scott', 'mezczyzna');
 INSERT INTO Rezyserowie (ID, Zyciorys) 
 VALUES (IDENT_CURRENT('Osoby'), 'Ridley Scott to brytyjski reżyser i producent, znany z takich filmów jak Alien, Gladiator i The Martian.');
-INSERT INTO Filmy (Tytul, RokProdukcji, Opis, SredniaOcena, Zwiastun, IDRezysera) 
-VALUES ('Gladiator', 2000, 'Rzym, 180 n.e. General Maximus zostaje zdradzony przez cesarza i staje się gladiatorem walczącym o zemstę.', 8.5, 'link_do_zwiastuna_gladiator', IDENT_CURRENT('Osoby'));
+INSERT INTO Filmy (Tytul, RokProdukcji, Opis, Zwiastun, IDRezysera) 
+VALUES ('Gladiator', 2000, 'Rzym, 180 n.e. General Maximus zostaje zdradzony przez cesarza i staje się gladiatorem walczącym o zemstę.', 'link_do_zwiastuna_gladiator', IDENT_CURRENT('Osoby'));
     INSERT INTO Osoby (Imie, Nazwisko, Plec) 
     VALUES ('Russell', 'Crowe', 'mezczyzna');
     INSERT INTO Aktorzy (ID, Zyciorys) 
@@ -383,8 +383,8 @@ INSERT INTO Osoby (Imie, Nazwisko, Plec)
 VALUES ('Lana', 'Wachowski', 'kobieta');
 INSERT INTO Rezyserowie (ID, Zyciorys)
 VALUES (IDENT_CURRENT('Osoby'), 'Lana Wachowski to amerykańska reżyserka, scenarzystka i producentka, znana z reżyserowania serii filmów "The Matrix".');
-INSERT INTO Filmy (Tytul, RokProdukcji, Opis, SredniaOcena, Zwiastun, IDRezysera)
-VALUES ('The Matrix', 1999, 'Film science fiction opowiadający historię hakera, który odkrywa, że rzeczywistość, w której żyje, jest symulacją stworzoną przez maszyny.', 8.7, 'link_do_zwiastuna_the_matrix', IDENT_CURRENT('Osoby'));
+INSERT INTO Filmy (Tytul, RokProdukcji, Opis, Zwiastun, IDRezysera)
+VALUES ('The Matrix', 1999, 'Film science fiction opowiadający historię hakera, który odkrywa, że rzeczywistość, w której żyje, jest symulacją stworzoną przez maszyny.', 'link_do_zwiastuna_the_matrix', IDENT_CURRENT('Osoby'));
     INSERT INTO Osoby (Imie, Nazwisko, Plec) 
     VALUES ('Keanu', 'Reeves', 'mezczyzna');
     INSERT INTO Aktorzy (ID, Zyciorys) 
@@ -410,8 +410,8 @@ INSERT INTO Osoby (Imie, Nazwisko, Plec)
 VALUES ('Robert', 'Zemeckis', 'mezczyzna');
 INSERT INTO Rezyserowie (ID, Zyciorys)
 VALUES (IDENT_CURRENT('Osoby'), 'Robert Zemeckis to amerykański reżyser i producent, znany z takich filmów jak "Forrest Gump", "Back to the Future" oraz "Cast Away".');
-INSERT INTO Filmy (Tytul, RokProdukcji, Opis, SredniaOcena, Zwiastun, IDRezysera)
-VALUES ('Forrest Gump', 1994, 'Film opowiadający historię mężczyzny o niskim IQ, który przypadkowo staje się świadkiem i uczestnikiem najważniejszych wydarzeń w historii Stanów Zjednoczonych.', 8.8, 'link_do_zwiastuna_forrest_gump', IDENT_CURRENT('Osoby'));
+INSERT INTO Filmy (Tytul, RokProdukcji, Opis, Zwiastun, IDRezysera)
+VALUES ('Forrest Gump', 1994, 'Film opowiadający historię mężczyzny o niskim IQ, który przypadkowo staje się świadkiem i uczestnikiem najważniejszych wydarzeń w historii Stanów Zjednoczonych.', 'link_do_zwiastuna_forrest_gump', IDENT_CURRENT('Osoby'));
     INSERT INTO Osoby (Imie, Nazwisko, Plec) 
     VALUES ('Tom', 'Hanks', 'mezczyzna');
     INSERT INTO Aktorzy (ID, Zyciorys) 
@@ -430,92 +430,92 @@ INSERT INTO Osoby (Imie, Nazwisko, Plec)
 VALUES ('Alastair', 'Fothergill', 'mezczyzna');
 INSERT INTO Rezyserowie (ID, Zyciorys) 
 VALUES (IDENT_CURRENT('Osoby'), 'Alastair Fothergill to brytyjski reżyser, specjalizujący się w produkcjach dokumentalnych, szczególnie przyrodniczych.');
-INSERT INTO Filmy (Tytul, RokProdukcji, Opis, SredniaOcena, Zwiastun, IDRezysera) 
-VALUES ('Planeta Ziemia', 2006, 'Dokument przyrodniczy ukazujący najwspanialsze miejsca na naszej planecie i życie w nich.', 9.0, 'link_do_zwiastuna_planeta_ziemia', IDENT_CURRENT('Osoby'));
+INSERT INTO Filmy (Tytul, RokProdukcji, Opis, Zwiastun, IDRezysera) 
+VALUES ('Planeta Ziemia', 2006, 'Dokument przyrodniczy ukazujący najwspanialsze miejsca na naszej planecie i życie w nich.', 'link_do_zwiastuna_planeta_ziemia', IDENT_CURRENT('Osoby'));
 
 INSERT INTO Osoby (Imie, Nazwisko, Plec) 
 VALUES ('John', 'Smith', 'mezczyzna');
 INSERT INTO Rezyserowie (ID, Zyciorys) 
 VALUES (IDENT_CURRENT('Osoby'), 'John Smith to reżyser filmów dokumentalnych, który zyskał popularność dzięki swojej pracy nad dokumentami o historii świata.');
-INSERT INTO Filmy (Tytul, RokProdukcji, Opis, SredniaOcena, Zwiastun, IDRezysera) 
-VALUES ('Wielki Mur Chiński', 2017, 'Dokument ukazujący historię i budowę Wielkiego Muru Chińskiego oraz jego wpływ na kulturę.', 7.5, 'link_do_zwiastuna_wielki_mur_chinski', IDENT_CURRENT('Osoby'));
+INSERT INTO Filmy (Tytul, RokProdukcji, Opis, Zwiastun, IDRezysera) 
+VALUES ('Wielki Mur Chiński', 2017, 'Dokument ukazujący historię i budowę Wielkiego Muru Chińskiego oraz jego wpływ na kulturę.', 'link_do_zwiastuna_wielki_mur_chinski', IDENT_CURRENT('Osoby'));
 
 INSERT INTO Osoby (Imie, Nazwisko, Plec) 
 VALUES ('Jacques', 'Cousteau', 'mezczyzna');
 INSERT INTO Rezyserowie (ID, Zyciorys) 
 VALUES (IDENT_CURRENT('Osoby'), 'Jacques Cousteau to francuski reżyser, odkrywca i badacz oceanów, znany ze swoich filmów dokumentalnych.');
-INSERT INTO Filmy (Tytul, RokProdukcji, Opis, SredniaOcena, Zwiastun, IDRezysera) 
-VALUES ('Ocean', 2009, 'Film dokumentalny o życiu oceanicznym, który przedstawia niezwykłą florę i faunę mórz i oceanów.', 8.0, 'link_do_zwiastuna_ocean', IDENT_CURRENT('Osoby'));
+INSERT INTO Filmy (Tytul, RokProdukcji, Opis, Zwiastun, IDRezysera) 
+VALUES ('Ocean', 2009, 'Film dokumentalny o życiu oceanicznym, który przedstawia niezwykłą florę i faunę mórz i oceanów.', 'link_do_zwiastuna_ocean', IDENT_CURRENT('Osoby'));
 
 INSERT INTO Osoby (Imie, Nazwisko, Plec) 
 VALUES ('Carl', 'Sagan', 'mezczyzna');
 INSERT INTO Rezyserowie (ID, Zyciorys) 
 VALUES (IDENT_CURRENT('Osoby'), 'Carl Sagan był amerykańskim astronomem, astrofizykiem i reżyserem, który zyskał sławę dzięki swojej pracy nad popularyzacją nauki.');
-INSERT INTO Filmy (Tytul, RokProdukcji, Opis, SredniaOcena, Zwiastun, IDRezysera) 
-VALUES ('Kosmos', 1980, 'Dokument opowiadający o historii wszechświata, jego początkach oraz ewolucji planet.', 9.2, 'link_do_zwiastuna_kosmos', IDENT_CURRENT('Osoby'));
+INSERT INTO Filmy (Tytul, RokProdukcji, Opis, Zwiastun, IDRezysera) 
+VALUES ('Kosmos', 1980, 'Dokument opowiadający o historii wszechświata, jego początkach oraz ewolucji planet.', 'link_do_zwiastuna_kosmos', IDENT_CURRENT('Osoby'));
 
 INSERT INTO Osoby (Imie, Nazwisko, Plec)
 VALUES ('David', 'Attenborough', 'mezczyzna');
 INSERT INTO Rezyserowie (ID, Zyciorys)
 VALUES (IDENT_CURRENT('Osoby'), 'David Attenborough to brytyjski reżyser i prezenter telewizyjny, znany z programów przyrodniczych i dokumentalnych.');
-INSERT INTO Filmy (Tytul, RokProdukcji, Opis, SredniaOcena, Zwiastun, IDRezysera)
-VALUES ('Życie na Ziemi', 2009, 'Dokumentalny serial przyrodniczy ukazujący różnorodność życia na naszej planecie i jego niesamowite formy.', 8.7, 'link_do_zwiastuna_zycie_na_ziemi', IDENT_CURRENT('Osoby'));
+INSERT INTO Filmy (Tytul, RokProdukcji, Opis, Zwiastun, IDRezysera)
+VALUES ('Życie na Ziemi', 2009, 'Dokumentalny serial przyrodniczy ukazujący różnorodność życia na naszej planecie i jego niesamowite formy.', 'link_do_zwiastuna_zycie_na_ziemi', IDENT_CURRENT('Osoby'));
 
 INSERT INTO Osoby (Imie, Nazwisko, Plec)
 VALUES ('Neil', 'deGrasse Tyson', 'mezczyzna');
 INSERT INTO Rezyserowie (ID, Zyciorys)
 VALUES (IDENT_CURRENT('Osoby'), 'Neil deGrasse Tyson to amerykański astrofizyk, autor książek naukowych oraz prowadzący popularne programy telewizyjne.');
-INSERT INTO Filmy (Tytul, RokProdukcji, Opis, SredniaOcena, Zwiastun, IDRezysera)
-VALUES ('Cosmos: A Spacetime Odyssey', 2014, 'Serial dokumentalny eksplorujący wszechświat i historię nauki w kontekście kosmologii, astrofizyki i astronomii.', 9.3, 'link_do_zwiastuna_cosmos', IDENT_CURRENT('Osoby'));
+INSERT INTO Filmy (Tytul, RokProdukcji, Opis, Zwiastun, IDRezysera)
+VALUES ('Cosmos: A Spacetime Odyssey', 2014, 'Serial dokumentalny eksplorujący wszechświat i historię nauki w kontekście kosmologii, astrofizyki i astronomii.', 'link_do_zwiastuna_cosmos', IDENT_CURRENT('Osoby'));
 
 INSERT INTO Osoby (Imie, Nazwisko, Plec)
 VALUES ('Jason', 'Hehir', 'mezczyzna');
 INSERT INTO Rezyserowie (ID, Zyciorys)
 VALUES (IDENT_CURRENT('Osoby'), 'Jason Hehir to amerykański reżyser i producent filmowy, znany z dokumentów sportowych.');
-INSERT INTO Filmy (Tytul, RokProdukcji, Opis, SredniaOcena, Zwiastun, IDRezysera)
-VALUES ('The Last Dance', 2020, 'Dokument opowiadający o ostatnim sezonie Michaela Jordana w Chicago Bulls oraz jego wpływie na koszykówkę i kulturę sportową.', 9.1, 'link_do_zwiastuna_the_last_dance', IDENT_CURRENT('Osoby'));
+INSERT INTO Filmy (Tytul, RokProdukcji, Opis, Zwiastun, IDRezysera)
+VALUES ('The Last Dance', 2020, 'Dokument opowiadający o ostatnim sezonie Michaela Jordana w Chicago Bulls oraz jego wpływie na koszykówkę i kulturę sportową.', 'link_do_zwiastuna_the_last_dance', IDENT_CURRENT('Osoby'));
 
 INSERT INTO Osoby (Imie, Nazwisko, Plec)
 VALUES ('Emer', 'Reid', 'mezczyzna');
 INSERT INTO Rezyserowie (ID, Zyciorys)
 VALUES (IDENT_CURRENT('Osoby'), 'Emer Reid to irlandzki reżyser i producent, znany z dokumentów naukowych o przestrzeni kosmicznej.');
-INSERT INTO Filmy (Tytul, RokProdukcji, Opis, SredniaOcena, Zwiastun, IDRezysera)
-VALUES ('The Farthest: Voyager in Space', 2017, 'Dokument o sondzie Voyager 1, która stała się najdalszym obiektem stworzonym przez człowieka, wysłanym w przestrzeń kosmiczną.', 8.3, 'link_do_zwiastuna_the_farthest', IDENT_CURRENT('Osoby'));
+INSERT INTO Filmy (Tytul, RokProdukcji, Opis, Zwiastun, IDRezysera)
+VALUES ('The Farthest: Voyager in Space', 2017, 'Dokument o sondzie Voyager 1, która stała się najdalszym obiektem stworzonym przez człowieka, wysłanym w przestrzeń kosmiczną.', 'link_do_zwiastuna_the_farthest', IDENT_CURRENT('Osoby'));
 
 INSERT INTO Osoby (Imie, Nazwisko, Plec)
 VALUES ('Errol', 'Morris', 'mezczyzna');
 INSERT INTO Rezyserowie (ID, Zyciorys)
 VALUES (IDENT_CURRENT('Osoby'), 'Errol Morris to amerykański reżyser dokumentalny, znany z tworzenia filmów o tematyce wojennej i politycznej.');
-INSERT INTO Filmy (Tytul, RokProdukcji, Opis, SredniaOcena, Zwiastun, IDRezysera)
-VALUES ('The Fog of War', 2003, 'Dokumentalny film, który bada życie Roberta S. McNamary, amerykańskiego sekretarza obrony, oraz jego decyzje w czasie wojny w Wietnamie.', 8.1, 'link_do_zwiastuna_the_fog_of_war', IDENT_CURRENT('Osoby'));
+INSERT INTO Filmy (Tytul, RokProdukcji, Opis, Zwiastun, IDRezysera)
+VALUES ('The Fog of War', 2003, 'Dokumentalny film, który bada życie Roberta S. McNamary, amerykańskiego sekretarza obrony, oraz jego decyzje w czasie wojny w Wietnamie.', 'link_do_zwiastuna_the_fog_of_war', IDENT_CURRENT('Osoby'));
 
 INSERT INTO Osoby (Imie, Nazwisko, Plec)
 VALUES ('Ava', 'DuVernay', 'kobieta');
 INSERT INTO Rezyserowie (ID, Zyciorys)
 VALUES (IDENT_CURRENT('Osoby'), 'Ava DuVernay to amerykańska reżyserka, scenarzystka i producentka, znana z filmów poruszających kwestie rasowe, społeczne i polityczne.');
-INSERT INTO Filmy (Tytul, RokProdukcji, Opis, SredniaOcena, IDRezysera)
-VALUES ('13th', 2016, 'Film dokumentalny, który bada nierówności rasowe w Stanach Zjednoczonych, koncentrując się na więziennictwie i systemie sprawiedliwości.', 8.2, IDENT_CURRENT('Osoby'));
+INSERT INTO Filmy (Tytul, RokProdukcji, Opis, IDRezysera)
+VALUES ('13th', 2016, 'Film dokumentalny, który bada nierówności rasowe w Stanach Zjednoczonych, koncentrując się na więziennictwie i systemie sprawiedliwości.', IDENT_CURRENT('Osoby'));
 
 INSERT INTO Osoby (Imie, Nazwisko, Plec)
 VALUES ('Morgan', 'Neville', 'mezczyzna');
 INSERT INTO Rezyserowie (ID, Zyciorys)
 VALUES (IDENT_CURRENT('Osoby'), 'Morgan Neville to amerykański reżyser dokumentalny, który zdobył uznanie za swoje produkcje o postaciach kulturowych i ważnych osobach.');
-INSERT INTO Filmy (Tytul, RokProdukcji, Opis, SredniaOcena, Zwiastun, IDRezysera)
-VALUES ('Wont You Be My Neighbor?', 2018, 'Dokument opowiadający historię Freda Rogersa, prowadzącego popularny program telewizyjny dla dzieci, który promował miłość, empatię i pozytywne wartości.', 8.4, 'link_do_zwiastuna_wont_you_be_my_neighbor', IDENT_CURRENT('Osoby'));
+INSERT INTO Filmy (Tytul, RokProdukcji, Opis, Zwiastun, IDRezysera)
+VALUES ('Wont You Be My Neighbor?', 2018, 'Dokument opowiadający historię Freda Rogersa, prowadzącego popularny program telewizyjny dla dzieci, który promował miłość, empatię i pozytywne wartości.', 'link_do_zwiastuna_wont_you_be_my_neighbor', IDENT_CURRENT('Osoby'));
 
 INSERT INTO Osoby (Imie, Nazwisko, Plec)
 VALUES ('Jan', 'Kowalski', 'mezczyzna');
 INSERT INTO Rezyserowie (ID, Zyciorys)
 VALUES (IDENT_CURRENT('Osoby'), 'Jan Kowalski to polski reżyser filmów dokumentalnych, specjalizujący się w tematach związanych z historią i kulturą.');
-INSERT INTO Filmy (Tytul, RokProdukcji, Opis, SredniaOcena, Zwiastun, IDRezysera)
-VALUES ('The Great Escape: Zatrzymać Czas', 2019, 'Film dokumentalny o wybitnym polskim fotografiku i filmowcu, ukazujący jego proces twórczy oraz uchwycone w czasie momenty historyczne.', 7.4, 'link_do_zwiastuna_great_escape', IDENT_CURRENT('Osoby'));
+INSERT INTO Filmy (Tytul, RokProdukcji, Opis, Zwiastun, IDRezysera)
+VALUES ('The Great Escape: Zatrzymać Czas', 2019, 'Film dokumentalny o wybitnym polskim fotografiku i filmowcu, ukazujący jego proces twórczy oraz uchwycone w czasie momenty historyczne.', 'link_do_zwiastuna_great_escape', IDENT_CURRENT('Osoby'));
 
 INSERT INTO Osoby (Imie, Nazwisko, Plec)
 VALUES ('Andrzej', 'Mazurek', 'mezczyzna');
 INSERT INTO Rezyserowie (ID, Zyciorys)
 VALUES (IDENT_CURRENT('Osoby'), 'Andrzej Mazurek to reżyser dokumentalny, znany z tworzenia filmów opartych na archiwalnych materiałach z II wojny światowej.');
-INSERT INTO Filmy (Tytul, RokProdukcji, Opis, SredniaOcena, IDRezysera)
-VALUES ('Powstanie Warszawskie', 2014, 'Film dokumentalny, który w całości bazuje na archiwalnych materiałach wideo i zdjęciach z okresu Powstania Warszawskiego, ukazując rzeczywiste wydarzenia.', 8.2, IDENT_CURRENT('Osoby'));
+INSERT INTO Filmy (Tytul, RokProdukcji, Opis, IDRezysera)
+VALUES ('Powstanie Warszawskie', 2014, 'Film dokumentalny, który w całości bazuje na archiwalnych materiałach wideo i zdjęciach z okresu Powstania Warszawskiego, ukazując rzeczywiste wydarzenia.', IDENT_CURRENT('Osoby'));
 
 
 -- Gatunki - tabela słownikowa
@@ -669,6 +669,7 @@ VALUES
     ((SELECT ID FROM Krytycy WHERE Email = 'lukasz.marcinowski@example.com'), (SELECT ID FROM Filmy WHERE Tytul = 'Interstellar'), 9, 'Zaskakujące i pełne emocji zakończenie.', GETDATE()),
     ((SELECT ID FROM Krytycy WHERE Email = 'agnieszka.szymanska@example.com'), (SELECT ID FROM Filmy WHERE Tytul = 'Interstellar'), 10, 'Perfekcyjna realizacja i niesamowita fabuła.', GETDATE());
 GO
+
 
 -- Filmy na liście do obejrzenia
 INSERT INTO FilmyDoObejrzenia (IDUzytkownika, IDFilmu, Status)

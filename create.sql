@@ -18,7 +18,9 @@ DROP TABLE IF EXISTS Osoby;
 CREATE TABLE Osoby(
     ID INT PRIMARY KEY IDENTITY(1,1),
     Imie VARCHAR(100) NOT NULL CHECK(Imie LIKE '[A-ZŁŻ]%'
-        AND Imie NOT LIKE '%[^A-Za-zŁŻąćęłńóśżź \.-]%'),
+        AND Imie NOT LIKE '%[^A-Za-zŁŻąćęłńóśżź \.-]%'
+        AND Imie NOT LIKE '%[ \.-][ \.-]%'
+        AND Imie NOT LIKE '%[ \.-]'),
     Nazwisko VARCHAR(200) NOT NULL CHECK(Nazwisko NOT LIKE '%[^A-Za-zĄĆĘŁŃÓŚŻŹąćęłńóśżź ''\-]%' 
         AND Nazwisko LIKE '%[A-ZĄĆĘŁŃÓŚŻŹ]%' 
         AND Nazwisko NOT LIKE '%[ ''\-][ ''\-]%'
@@ -57,7 +59,7 @@ CREATE TABLE Filmy(
     Tytul VARCHAR(300) NOT NULL,
     RokProdukcji SMALLINT NOT NULL CHECK(RokProdukcji >= 1895 and RokProdukcji <= YEAR(GETDATE())),
     Opis VARCHAR(2000) NOT NULL,
-    SredniaOcena DECIMAL(3,1) NOT NULL CHECK(SredniaOcena >= 0.0 and SredniaOcena <= 10.0),
+    SredniaOcena DECIMAL(3,1) CHECK(SredniaOcena >= 0.0 and SredniaOcena <= 10.0) DEFAULT NULL,
     Zwiastun VARCHAR(2000),
     IDRezysera INT NOT NULL FOREIGN KEY REFERENCES Rezyserowie(ID)
 );
@@ -113,15 +115,42 @@ CREATE TABLE Obsada(
 
 -- Funkcje pomocnicze
 GO
-CREATE TRIGGER SprawdzDateWystawienia
+CREATE TRIGGER SprawdzDateWystawieniaOrazSredniaOcena
 ON Opinie
 AFTER INSERT, UPDATE
 AS
 BEGIN
-    IF EXISTS(SELECT 1 FROM inserted WHERE YEAR(DataWystawienia) < (SELECT RokProdukcji FROM Filmy WHERE ID = IDFilmu) OR DataWystawienia > GETDATE())
+    IF EXISTS (
+            SELECT 1 FROM inserted 
+            WHERE YEAR(DataWystawienia) < (SELECT RokProdukcji FROM Filmy WHERE ID = IDFilmu) OR DataWystawienia > GETDATE()
+        )
     BEGIN
         RAISERROR('Data wystawienia opinii nie może być wcześniejsza niż rok produkcji filmu ani późniejsza niż dzisiejsza data.', 16, 1);
         ROLLBACK;
     END;
+
+    UPDATE Filmy
+    SET SredniaOcena = (
+        SELECT CAST(AVG(CAST(O.Ocena AS DECIMAL(3,1))) AS DECIMAL(3,1))
+        FROM Opinie O
+        WHERE O.IDFilmu = Filmy.ID
+    )
+    WHERE ID IN (SELECT DISTINCT IDFilmu FROM inserted); 
+END;
+
+GO
+
+CREATE TRIGGER SprawdzSredniaOceneUsun
+ON Opinie
+AFTER DELETE
+AS
+BEGIN
+    UPDATE Filmy
+    SET SredniaOcena = (
+        SELECT CAST(AVG(CAST(O.Ocena AS DECIMAL(3,1))) AS DECIMAL(3,1))
+        FROM Opinie O
+        WHERE O.IDFilmu = Filmy.ID
+    )
+    WHERE ID IN (SELECT DISTINCT IDFilmu FROM deleted);
 END;
 GO
