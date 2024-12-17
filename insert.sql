@@ -286,10 +286,11 @@ VALUES ('Interstellar', 2014, 'Grupa astronautów wyrusza w podróż kosmiczną,
 
 INSERT INTO Osoby (Imie, Nazwisko, Plec) 
 VALUES ('Martin', 'Scorsese', 'mezczyzna');
+SET @RezyserID = IDENT_CURRENT('Osoby');
 INSERT INTO Rezyserowie (ID, Zyciorys) 
 VALUES (IDENT_CURRENT('Osoby'), 'Martin Scorsese to amerykański reżyser i producent, znany z filmów takich jak Wściekły Byk, Casino i Ostatni Władca Wietrzu.');
 INSERT INTO Filmy (Tytul, RokProdukcji, Opis, Zwiastun, IDRezysera) 
-VALUES ('Wściekły Byk', 1980, 'Historia boksera Jake’a LaMotta, który zmaga się z własnymi demonami w trakcie kariery zawodowej.', 'link_do_zwiastuna_wsciekly_byk', IDENT_CURRENT('Osoby'));
+VALUES ('Wściekły Byk', 1980, 'Historia boksera Jake’a LaMotta, który zmaga się z własnymi demonami w trakcie kariery zawodowej.', 'link_do_zwiastuna_wsciekly_byk', @RezyserID);
     INSERT INTO Osoby (Imie, Nazwisko, Plec) 
     VALUES ('Robert', 'De Niro', 'mezczyzna');
     INSERT INTO Aktorzy (ID, Zyciorys) 
@@ -310,6 +311,28 @@ VALUES ('Wściekły Byk', 1980, 'Historia boksera Jake’a LaMotta, który zmaga
     VALUES (IDENT_CURRENT('Osoby'), 'Cathy Moriarty to amerykańska aktorka, znana z roli w "Wściekłym Byku".');
     INSERT INTO Obsada (IDFilmu, IDAktora, Rola) 
     VALUES (IDENT_CURRENT('Filmy'), IDENT_CURRENT('Osoby'), 'Vickie LaMotta');
+---
+INSERT INTO Filmy (Tytul, RokProdukcji, Opis, Zwiastun, IDRezysera) 
+VALUES ('Wilk z Wall Street', 2013, 'Historia Jordana Belforta, maklera giełdowego prowadzącego życie pełne luksusu i oszustw.', 'link_do_zwiastuna_wilk_z_wall_street', @RezyserID);
+    INSERT INTO Osoby (Imie, Nazwisko, Plec) 
+    VALUES ('Jonah', 'Hill', 'mezczyzna');
+    INSERT INTO Aktorzy (ID, Zyciorys) 
+    VALUES (IDENT_CURRENT('Osoby'), 'Jonah Hill to amerykański aktor i komik, znany z roli w "Wilku z Wall Street".');
+    INSERT INTO Obsada (IDFilmu, IDAktora, Rola) 
+    VALUES (IDENT_CURRENT('Filmy'), IDENT_CURRENT('Osoby'), 'Donnie Azoff');
+    ---
+    INSERT INTO Osoby (Imie, Nazwisko, Plec) 
+    VALUES ('Margot', 'Robbie', 'kobieta');
+    INSERT INTO Aktorzy (ID, Zyciorys) 
+    VALUES (IDENT_CURRENT('Osoby'), 'Margot Robbie to australijska aktorka, znana z ról w filmach "Wilk z Wall Street" i "Barbie".');
+    INSERT INTO Obsada (IDFilmu, IDAktora, Rola) 
+    VALUES (IDENT_CURRENT('Filmy'), IDENT_CURRENT('Osoby'), 'Naomi Lapaglia');
+    ---
+    INSERT INTO Obsada (IDFilmu, IDAktora, Rola)
+    VALUES (IDENT_CURRENT('Filmy'), (SELECT ID FROM Osoby WHERE Imie = 'Leonardo' AND Nazwisko = 'DiCaprio'), 'Jordan Belfort');
+    ---
+    INSERT INTO Obsada (IDFilmu, IDAktora, Rola)
+    VALUES (IDENT_CURRENT('Filmy'), (SELECT ID FROM Osoby WHERE Imie = 'Matthew' AND Nazwisko = 'McConaughey'), 'Mark Hanna');
 
 INSERT INTO Osoby (Imie, Nazwisko, Plec) 
 VALUES ('Quentin', 'Tarantino', 'mezczyzna');
