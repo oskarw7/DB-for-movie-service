@@ -675,6 +675,7 @@ VALUES
     ((SELECT ID FROM Krytycy WHERE Email = 'piotr.nowak@example.com'), (SELECT ID FROM Filmy WHERE Tytul = 'Interstellar'), 7, 'Film dobry, ale przewidywalny w niektórych momentach.', GETDATE()),
     ((SELECT ID FROM Krytycy WHERE Email = 'katarzyna.kowalska@example.com'), (SELECT ID FROM Filmy WHERE Tytul = 'Incepcja'), 8, 'Świetna gra aktorska i wspaniałe zdjęcia.', GETDATE()),
     ((SELECT ID FROM Krytycy WHERE Email = 'piotr.nowak@example.com'), (SELECT ID FROM Filmy WHERE Tytul = 'Pulp Fiction'), 9, '"Pulp Fiction" to film, który zrewolucjonizował gatunek kryminalny, łącząc brutalność z humorem i inteligentnym komentarzem społecznym. Każda ze splątanych historii – od rozterek płatnych zabójców, przez upadek boksera, po problemy z nieoczekiwanym "sprzątaniem" – jest niezależnym arcydziełem, które harmonijnie współgra z resztą fabuły.', GETDATE()),
+    ((SELECT ID FROM Krytycy WHERE Email = 'piotr.nowak@example.com'), (SELECT ID FROM Filmy WHERE Tytul = 'E.T.'), 7, 'Ten film to klasyk, który niesamowicie wpłynął na gatunek Sci-Fi', GETDATE()),
     ((SELECT ID FROM Krytycy WHERE Email = 'andrzej.wisniewski@example.com'), (SELECT ID FROM Filmy WHERE Tytul = 'E.T.'), 10, 'Arcydzieło filmowe, które porusza ważne tematy.', GETDATE()),
     ((SELECT ID FROM Krytycy WHERE Email = 'aleksandra.jankowska@example.com'), (SELECT ID FROM Filmy WHERE Tytul = 'Gladiator'), 8, '"Gladiator" to nie tylko spektakularne widowisko, ale również emocjonalna podróż, która angażuje widza na wielu poziomach. Russell Crowe, w swojej oscarowej roli Maximus Decimus Meridius, wciela się w postać niezłomnego bohatera, który staje się symbolem walki o sprawiedliwość.', GETDATE()),
     ((SELECT ID FROM Krytycy WHERE Email = 'artur.lis@example.com'), (SELECT ID FROM Filmy WHERE Tytul = 'The Matrix'), 8, 'Świetne tempo akcji i zaskakujące zwroty fabuły.', GETDATE()),
@@ -685,10 +686,14 @@ VALUES
     ((SELECT ID FROM Krytycy WHERE Email = 'jolanta.kozlowska@example.com'), (SELECT ID FROM Filmy WHERE Tytul = 'Kosmos'), 9, 'Wspaniała ścieżka dźwiękowa i emocjonujące zakończenie.', GETDATE()),
     ((SELECT ID FROM Krytycy WHERE Email = 'tomasz.wojcichowski@example.com'), (SELECT ID FROM Filmy WHERE Tytul = 'Życie na Ziemi'), 7, 'Solidna produkcja, choć brakuje większego zaskoczenia.', GETDATE()),
     ((SELECT ID FROM Krytycy WHERE Email = 'pawel.miller@example.com'), (SELECT ID FROM Filmy WHERE Tytul = 'Cosmos: A Spacetime Odyssey'), 5, 'Film z dużym potencjałem, ale realizacja zawiodła.', GETDATE()),
+    ((SELECT ID FROM Krytycy WHERE Email = 'pawel.miller@example.com'), (SELECT ID FROM Filmy WHERE Tytul = 'The Last Dance'), 7, 'Wciągający dokument o życiu Michaela Jordana.', GETDATE()),
     ((SELECT ID FROM Krytycy WHERE Email = 'julia.nowak@example.com'), (SELECT ID FROM Filmy WHERE Tytul = 'The Last Dance'), 10, 'Pełne emocji arcydzieło, które na długo zapada w pamięć.', GETDATE()),
     ((SELECT ID FROM Krytycy WHERE Email = 'sebastian.krawczyk@example.com'), (SELECT ID FROM Filmy WHERE Tytul = 'The Farthest: Voyager in Space'), 6, 'Niektóre wątki nie zostały w pełni rozwinięte.', GETDATE()),
     ((SELECT ID FROM Krytycy WHERE Email = 'elzbieta.bak@example.com'), (SELECT ID FROM Filmy WHERE Tytul = 'The Fog of War'), 7, 'Świetna narracja.', GETDATE()),
+    ((SELECT ID FROM Krytycy WHERE Email = 'patryk.lipinski@example.com'), (SELECT ID FROM Filmy WHERE Tytul = 'E.T.'), 6, 'Przełomowy jak na swój czas, obecnie karykaturalny.', GETDATE()),
     ((SELECT ID FROM Krytycy WHERE Email = 'patryk.lipinski@example.com'), (SELECT ID FROM Filmy WHERE Tytul = '13th'), 7, 'Dobrze zrealizowany film, ale bez większego zachwytu.', GETDATE()),
+    ((SELECT ID FROM Krytycy WHERE Email = 'patryk.lipinski@example.com'), (SELECT ID FROM Filmy WHERE Tytul = 'Incepcja'), 8, 'Dobry film.', GETDATE()),
+    ((SELECT ID FROM Krytycy WHERE Email = 'lukasz.marcinowski@example.com'), (SELECT ID FROM Filmy WHERE Tytul = 'Incepcja'), 7, 'Wciągający film, który można analizować dniami.', GETDATE()),
     ((SELECT ID FROM Krytycy WHERE Email = 'lukasz.marcinowski@example.com'), (SELECT ID FROM Filmy WHERE Tytul = 'Interstellar'), 9, 'Zaskakujące i pełne emocji zakończenie.', GETDATE()),
     ((SELECT ID FROM Krytycy WHERE Email = 'agnieszka.szymanska@example.com'), (SELECT ID FROM Filmy WHERE Tytul = 'Interstellar'), 10, 'Perfekcyjna realizacja i niesamowita fabuła.', GETDATE());
 GO
@@ -698,7 +703,7 @@ GO
 INSERT INTO FilmyDoObejrzenia (IDUzytkownika, IDFilmu, Status)
 VALUES
   ((SELECT ID FROM ZwykliUzytkownicy WHERE Email = 'marta.kaczmarek@example.com'), (SELECT ID FROM Filmy WHERE Tytul = 'Incepcja'), 'notWatched'),
-  ((SELECT ID FROM ZwykliUzytkownicy WHERE Email = 'marta.kaczmarek@example.com'), (SELECT ID FROM Filmy WHERE Tytul = 'Interstellar'), 'watched'),
+  ((SELECT ID FROM ZwykliUzytkownicy WHERE Email = 'marta.kaczmarek@example.com'), (SELECT ID FROM Filmy WHERE Tytul = 'Interstellar'), 'notWatched'),
   ((SELECT ID FROM ZwykliUzytkownicy WHERE Email = 'marta.kaczmarek@example.com'), (SELECT ID FROM Filmy WHERE Tytul = 'Wściekły byk'), 'notWatched'),
   ((SELECT ID FROM ZwykliUzytkownicy WHERE Email = 'joanna.pawlak@example.com'), (SELECT ID FROM Filmy WHERE Tytul = 'Incepcja'), 'notWatched'),
   ((SELECT ID FROM ZwykliUzytkownicy WHERE Email = 'magdalena.krawczyk@example.com'), (SELECT ID FROM Filmy WHERE Tytul = 'Wściekły byk'), 'notWatched'),
