@@ -646,8 +646,9 @@ GO
 INSERT INTO Opinie (IDZwyklegoUzytkownika, IDFilmu, Ocena, Tresc, DataWystawienia)
 VALUES
     ((SELECT ID FROM ZwykliUzytkownicy WHERE Email = 'marta.kaczmarek@example.com'), (SELECT ID FROM Filmy WHERE Tytul = 'Incepcja'), 8, 'Film był naprawdę interesujący.', GETDATE()),
-    ((SELECT ID FROM ZwykliUzytkownicy WHERE Email = 'marta.kaczmarek@example.com'), (SELECT ID FROM Filmy WHERE Tytul = 'The Great Escape: Zatrzymać Czas'), 10, 'Arcydzieło, naprawdę warto zobaczyć.', GETDATE()),
-    ((SELECT ID FROM ZwykliUzytkownicy WHERE Email = 'tomasz.szymanski@example.com'), (SELECT ID FROM Filmy WHERE Tytul = 'Incepcja'), 9, 'Naprawdę dobra produkcja.', GETDATE()),
+    ((SELECT ID FROM ZwykliUzytkownicy WHERE Email = 'marta.kaczmarek@example.com'), (SELECT ID FROM Filmy WHERE Tytul = 'The Great Escape: Zatrzymać Czas'), 9, 'Arcydzieło, naprawdę warto zobaczyć.', GETDATE()),
+    ((SELECT ID FROM ZwykliUzytkownicy WHERE Email = 'marta.kaczmarek@example.com'), (SELECT ID FROM Filmy WHERE Tytul = 'Forrest Gump'), 9, 'Warto zobaczyć.', '2023-12-10'),
+    ((SELECT ID FROM ZwykliUzytkownicy WHERE Email = 'tomasz.szymanski@example.com'), (SELECT ID FROM Filmy WHERE Tytul = 'Incepcja'), 9, 'Naprawdę dobra produkcja.', '2024-12-12'),
     ((SELECT ID FROM ZwykliUzytkownicy WHERE Email = 'pawel.kwiatkowski@example.com'), (SELECT ID FROM Filmy WHERE Tytul = 'Wściekły byk'), 7, 'Dobry, ale czegoś mi brakowało.', GETDATE()),
     ((SELECT ID FROM ZwykliUzytkownicy WHERE Email = 'joanna.pawlak@example.com'), (SELECT ID FROM Filmy WHERE Tytul = 'Pulp Fiction'), 6, 'Były lepsze filmy w tym gatunku.', GETDATE()),
     ((SELECT ID FROM ZwykliUzytkownicy WHERE Email = 'magdalena.krawczyk@example.com'), (SELECT ID FROM Filmy WHERE Tytul = 'E.T.'), 10, 'Fantastyczny, polecam każdemu!', GETDATE()),
@@ -702,7 +703,7 @@ GO
 -- Filmy na liście do obejrzenia
 INSERT INTO FilmyDoObejrzenia (IDUzytkownika, IDFilmu, Status)
 VALUES
-  ((SELECT ID FROM ZwykliUzytkownicy WHERE Email = 'marta.kaczmarek@example.com'), (SELECT ID FROM Filmy WHERE Tytul = 'Incepcja'), 'notWatched'),
+  ((SELECT ID FROM ZwykliUzytkownicy WHERE Email = 'marta.kaczmarek@example.com'), (SELECT ID FROM Filmy WHERE Tytul = 'Incepcja'), 'Watched'),
   ((SELECT ID FROM ZwykliUzytkownicy WHERE Email = 'marta.kaczmarek@example.com'), (SELECT ID FROM Filmy WHERE Tytul = 'Interstellar'), 'notWatched'),
   ((SELECT ID FROM ZwykliUzytkownicy WHERE Email = 'marta.kaczmarek@example.com'), (SELECT ID FROM Filmy WHERE Tytul = 'Wściekły byk'), 'notWatched'),
   ((SELECT ID FROM ZwykliUzytkownicy WHERE Email = 'joanna.pawlak@example.com'), (SELECT ID FROM Filmy WHERE Tytul = 'Incepcja'), 'notWatched'),
@@ -721,4 +722,6 @@ VALUES
   ((SELECT ID FROM ZwykliUzytkownicy WHERE Email = 'rafal.jablonski@example.com'), (SELECT ID FROM Filmy WHERE Tytul = 'The Fog of War'), 'notWatched'),
   ((SELECT ID FROM ZwykliUzytkownicy WHERE Email = 'kamil.mazur@example.com'), (SELECT ID FROM Filmy WHERE Tytul = '13th'), 'watched'),
   ((SELECT ID FROM ZwykliUzytkownicy WHERE Email = 'izabela.piotrowska@example.com'), (SELECT ID FROM Filmy WHERE Tytul = 'Wont You Be My Neighbor?'), 'notWatched'),
+  ((SELECT ID FROM ZwykliUzytkownicy WHERE Email = 'joanna.pawlak@example.com'), (SELECT ID FROM Filmy WHERE Tytul = 'Interstellar'), 'notWatched'),
+  ((SELECT ID FROM ZwykliUzytkownicy WHERE Email = 'joanna.pawlak@example.com'), (SELECT ID FROM Filmy WHERE Tytul = 'Wściekły byk'), 'notWatched'),
   ((SELECT ID FROM ZwykliUzytkownicy WHERE Email = 'rafal.jablonski@example.com'), (SELECT ID FROM Filmy WHERE Tytul = 'The Great Escape: Zatrzymać Czas'), 'notWatched');

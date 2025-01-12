@@ -6,7 +6,7 @@ Dany użytkownik chce wyświetlić listę filmów do obejrzenia, których jeszcz
 Christophera Nolana.
 Zapytanie:
 Wyświetl tytuł, imię i nazwisko reżysera oraz średnią ocenę filmów wyreżyserowanych przez Christophera Nolana, które zostały dodane do listy do obejrzenia 
-przez użytkownika o adresie e-mail "marta.kaczmarek@example.com", ale nie zostały jeszcze ocenione, posortowane według średniej oceny malejąco.
+przez użytkownika o adresie e-mail "joanna.pawlak@example.com", ale nie zostały jeszcze ocenione, posortowane według średniej oceny malejąco.
 */
 
 SELECT
@@ -21,7 +21,7 @@ WHERE EXISTS (
     WHERE LDO.IDFilmu = F.ID
     AND LDO.IDUzytkownika = (
             SELECT ID FROM ZwykliUzytkownicy 
-            WHERE Email = 'marta.kaczmarek@example.com'
+            WHERE Email = 'joanna.pawlak@example.com'
         )
     AND LDO.Status = 'notWatched'
 )
